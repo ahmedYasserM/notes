@@ -2,6 +2,7 @@
 
 ## Machine Learning Resources
 
+- [Mathematics for Machine Learning Book](https://mml-book.github.io/)
 - [Stanford CS229: Machine Learning](https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU)
 - [Python for Data Analysis Book 3rd Edition](https://wesmckinney.com/book/preliminaries)
 - [Python Datascience Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
