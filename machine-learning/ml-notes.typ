@@ -178,7 +178,11 @@ The equation can also be expressed in vector form as:
 
     Where:
 
-    $theta = vec(theta_0, theta_1, ..., theta_n)$ is the vector of parameters (weights) and $X = vec(1, x_1, x_2, ..., x_n)$ is the vector of input features.
+    $theta = vec(theta_0, theta_1, ..., theta_n)$ is the vector of parameters (weights)
+
+    #linebreak()
+
+    $X = vec(1, x_1, x_2, ..., x_n)$ is the vector of input features.
 
   ],
 )
@@ -222,7 +226,7 @@ Batch gradient descent is an optimization algorithm used to minimize the cost fu
   [
     Repeat until convergence:
     #align(center)[
-      $theta_j := theta_j - alpha * partial J(theta) / partial theta_j = theta_j - alpha * 1 / m sum_(i=1)^m (h(x^(i)) - y^(i)) x_j^(i)$
+      $theta_j := theta_j - alpha * partial J(theta) / partial theta_j = theta_j - alpha * 1 / m sum_(i=1)^m (h(x^((i))) - y^((i))) x_j^((i))$
 
     ]
 
@@ -240,5 +244,33 @@ Batch gradient descent is an optimization algorithm used to minimize the cost fu
   ],
 )
 
+#pagebreak()
 
+=== Stochastic Gradient Descent (SGD)
+
+Stochastic gradient descent (SGD) is a variant of gradient descent that updates the model parameters using only one training example at a time. This can lead to faster convergence.
+
+
+
+#theorem("Stochastic Gradient Descent Algorithm")[
+  Repeat:
+
+  #h(20pt) For $i = 1$ to $m$:
+
+  #align(center)[
+    $theta_j := theta_j - alpha (h(x^((i))) - y^((i))) x_j^((i))$ #h(30pt)For $j = 0$ to $n$
+  ]
+
+  Where:
+
+  - $theta_j$ is the parameter (weight) for the $j\-\th$ feature
+
+  - $alpha$ is the learning rate (step size)
+
+  - $h(x^((i)))$ is the predicted value for the $i\-\th$ training example
+
+  - $y^((i))$ is the actual value for the $i\-\th$ training example
+
+  - $x_j^((i))$ is the value of the $j\-\th$ feature for the $i\-\th$ training example
+]
 
