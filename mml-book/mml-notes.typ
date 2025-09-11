@@ -25,6 +25,12 @@
   v(-0.3em)
 }
 
+#let theorem(body) = {
+  text(rgb("#0077B6"))[Theorem (#body)]
+  v(-0.3em)
+}
+
+
 #let definition(title, body) = {
   block(width: 100%, fill: none, stroke: (thickness: 1.5pt, paint: rgb("#2C3E50")), radius: 4pt, inset: 0pt, [
     #block(
@@ -242,3 +248,49 @@ $
 This means that the transformation matrix can be used to map coordinates with respect to an ordered basis in $V$ to coordinates with respect to an ordered basis in $W$.
 
 === 2.7.2 Basis Change
+
+
+#theorem("Basis Change")
+
+Let $Phi: V -> W$ be a linear mapping between vector spaces with ordered bases
+
+$
+  B & = (bold(b)_1, dots, bold(b)_n) quad & "and" quad tilde(B) & = (tilde(bold(b))_1, dots, tilde(bold(b))_n)
+$
+
+of $V$, and
+
+$
+  C & = (bold(c)_1, dots, bold(c)_m) quad & "and" quad tilde(C) & = (tilde(bold(c))_1, dots, tilde(bold(c))_m)
+$
+
+of $W$.
+
+If $bold(A)_Phi$ is the transformation matrix of $Phi$ with respect to bases $B$ and $C$, then the transformation matrix $tilde(bold(A))_Phi$ with respect to bases $tilde(B)$ and $tilde(C)$ is given by:
+
+$
+  tilde(bold(A))_Phi = bold(T)^(-1) bold(A)_Phi bold(S)
+$
+
+where:
+- $bold(S) in bb(R)^(n times n)$ is the transformation matrix of $"Id"_V$ that maps coordinates with respect to $tilde(B)$ onto coordinates with respect to $B$ in $V$
+- $bold(T) in bb(R)^(m times m)$ is the transformation matrix of $"Id"_W$ that maps coordinates with respect to $tilde(C)$ onto coordinates with respect to $C$ in $W$
+
+
+#def("Equivalence")
+Two matrices $bold(A)$ and $bold(tilde(A)) in RR^(m times n)$ are *equivalent* if there exists *regular* matrices $bold(S) in RR^(n times n)$ and $bold(T) in RR^(m times m)$, such that $bold(tilde(A)) = bold(T)^(-1) bold(A) bold(S)$
+
+in other words, two matrices $bold(A)$ and $bold(tilde(A))$ are *equivalent* if they represent the *same linear transformation* $Phi: V -> W$.
+
+#def("Similarity")
+Two matrices $bold(A)$ and $bold(tilde(A)) in RR^(n times n)$ are *similar* if there exists a *regular* matrix $bold(S) in RR^(n times n)$, such that $bold(tilde(A)) = bold(S)^(-1) bold(A) bold(S)$
+
+in other words, two matrices $bold(A)$ and $bold(tilde(A))$ are *similar* if they represent the *same linear transformation* $Phi: V -> V$.
+
+#remark("")
+*Similar* matrices are always *equivalent*. However, *equivalent* matrices are not necessary *similar*.
+
+
+#remark("")
+The composition of two linear transformations, $Phi: V -> W$ and $Psi: W -> X$, results in another linear transformation $Psi compose Phi: V -> X$. The matrix representing this combined transformation, $bold(A)_(Psi compose Phi)$, is the product of the individual transformation matrices: $bold(A)_(Psi compose Phi) = bold(A)_(Psi) bold(A)_(Phi)$.
+
