@@ -294,3 +294,41 @@ in other words, two matrices $bold(A)$ and $bold(tilde(A))$ are *similar* if the
 #remark("")
 The composition of two linear transformations, $Phi: V -> W$ and $Psi: W -> X$, results in another linear transformation $Psi compose Phi: V -> X$. The matrix representing this combined transformation, $bold(A)_(Psi compose Phi)$, is the product of the individual transformation matrices: $bold(A)_(Psi compose Phi) = bold(A)_(Psi) bold(A)_(Phi)$.
 
+#def("Kernel (Null Space)")
+For a linear transformation $Phi: V -> W$, the *kernel* is the set of all vectors $bold(v) in V$ that are mapped to the zero vector of $W$.
+
+$
+  ker(Phi) := Phi^(-1)(bold(0)_W) = {bold(v) in V | Phi(bold(v)) = bold(0)_W}
+$
+
+#def("Image (Range)")
+For a linear transformation $Φ: V -> W$, the *image* is the set of all vectors $bold(w) in W$ that can be "reached" by the transformation from some vector in $V$.
+
+$
+  "Im"(Φ) := Phi(V) = {bold(w) in W | exists bold(v) in V, Φ(bold(v)) = bold(w)}
+$
+
+Intuitively, the *kernel* is the set of vector $bold(v) in V$ that $Phi$ maps onto the zero vector $bold(0)_W in W$. The *image* is the set of all vectors $bold(w) in W$ that can be _reached_ by $Phi$ from any vector in $V$.
+
+#remark("")
+For $Phi: V -> W$, we call $V$ the *domain* and $W$ the *codomain*
+
+The kernel is the set of vectors $v in V$ that $Phi$ maps onto the _neutral element_ $bold(0)_W in W$
+
+#remark("")
+Consider a linear mapping $Phi: V -> W$, where $V$ and $W$ are vector spaces:
+- It always holds that $Phi(bold(0)_V) = bold(0)_W$, therefore, $bold(0)_V in ker(Phi)$. In particular, the null spaces is never empty.
+- $"Im"(Phi) subset.eq W$ is a *subspace* of $W$, and $ker(Phi) subset.eq V$ is a *subspace* of $V$.
+
+#theorem("Rank-Nullity Theorem or Fundamental Theorem of Linear Mappings")
+For vector spaces $V$ and $W$ and linear mapping $Phi: V -> W$ it holds that
+
+$
+  dim(ker(Phi)) + dim("Im"(Phi)) = dim(V)
+$
+
+#remark("(Direct Consequences of the Rank-Nullity Theorem)")
+- If $dim("im"(Phi)) < dim(V)$, then the $ker(Phi)$ is *non-trivial*, i.e., the kernel contains more than $bold(0)_V$ and $dim(ker(Phi)) >= 1$
+- If $bold(A)_Phi$ is the transformation matrix of $Phi$ with respect to an ordered basis and $dim("Im"(Phi)) < dim(V)$, the the system of linear equations $bold(A)_Phi bold(x) = bold(0)$ has *infinitely many solutions*.
+
+
