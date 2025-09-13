@@ -329,6 +329,65 @@ $
 
 #remark("(Direct Consequences of the Rank-Nullity Theorem)")
 - If $dim("im"(Phi)) < dim(V)$, then the $ker(Phi)$ is *non-trivial*, i.e., the kernel contains more than $bold(0)_V$ and $dim(ker(Phi)) >= 1$
-- If $bold(A)_Phi$ is the transformation matrix of $Phi$ with respect to an ordered basis and $dim("Im"(Phi)) < dim(V)$, the the system of linear equations $bold(A)_Phi bold(x) = bold(0)$ has *infinitely many solutions*.
+- If $bold(A)_Phi$ is the transformation matrix of $Phi$ with respect to an ordered basis and #box($dim("Im"(Phi)) < dim(V)$), then the SLE $bold(A)_Phi bold(x) = bold(0)$ has *infinitely many solutions*.
 
 
+
+=== 2.8.1 Affine Subspaces
+
+#def("Affine Subspace")
+let $V$ be a vector space, $bold(x_0) in V$ and $U subset.eq V$ a subspace. Then the subset
+
+$
+  L & = bold(x_0) + U := {bold(x_0) + bold(u): u in U} \
+    & = {bold(v) in V | exists bold(u) in U : bold(v) = bold(x_0) + bold(u)} subset.eq V
+$
+
+is called *affine subspace* or *linear manifold* of $V$. $U$ is called *direction* or *direction space*, and $bold(x_0)$ is called *support point*.
+
+#remark("")
+The definition of an affine subspace _excludes_ $bold(0)$ if $bold(x_0) in.not U$. Therefore, an affine subspace is not a *linear* subspace (vector subspace) of $V$ for $bold(x)_0 in.not U$.
+
+
+#remark("")
+Consider two affine subspaces $L = bold(x_0) + U$ and $tilde(L) = tilde(bold(x_0)) + tilde(U)$ of a vector space $V$. Then, $L subset.eq tilde(L)$ if and only if $U subset.eq tilde(U)$ and $bold(x_0) in tilde(L)$
+
+#remark("")
+Affine subspaces are often described by parameters: Consider a $k$-dimensional affine space #box($L = bold(x_0) + U "of" V$). if $(bold(b_1), dots, bold(b_k))$ is an ordered basis of $U$, then every element $bold(x) in L$ can be uniquely written as
+
+$
+  bold(x) = bold(x_0) + lambda_1 bold(b_1) + dots + lambda_k bold(b_k)
+$
+
+where $lambda_1, dots, lambda_k in RR$. Ths representaion is called the *parametric equation* of $L$ with *directional vectors* $bold(b_1), dots, bold(b_k)$ and *parameter* $lambda_1, dots, lambda_k$.
+
+#remark("")
+
+In $bb(R)^n$, the $(n-1)$-dimensional affine subspaces are called *hyperplanes*, and the corresponding parametric equation is:
+
+$
+  bold(y) = bold(x)_0 + sum_(i=1)^(n-1) lambda_i bold(b)_i
+$
+
+where $bold(b)_1, dots, bold(b)_(n-1)$ form a basis of an $(n-1)$-dimensional subspace $U$ of $bb(R)^n$.
+
+This means that a hyperplane is defined by:
+- A *support point* $bold(x)_0$
+- $(n-1)$ linearly independent vectors $bold(b)_1, dots, bold(b)_(n-1)$ that span the direction space
+
+*Examples:*
+- In $bb(R)^2$, a line is a hyperplane
+- In $bb(R)^3$, a plane is a hyperplane
+
+#remark("(Inhomogeneous systems of linear equations and affine subspaces)")
+For $bold(A) in bb(R)^(m times n)$ and $bold(b) in bb(R)^m$, the solution of the system of linear equations $bold(A) bold(x) = bold(b)$ is either the *empty set* or an *affine subspace* of $bb(R)^n$ of dimension $n - "rk"(bold(A))$.
+
+In particular, the solution of the linear equation
+$ lambda_1 bold(b)_1 + dots + lambda_n bold(b)_n = bold(x) $
+where $(lambda_1, dots, lambda_n) != (0, dots, 0)$, is a hyperplane in $bb(R)^n$.
+
+
+In $bb(R)^n$, every $k$-dimensional affine subspace is the solution of an inhomogeneous system of linear equations $bold(A) bold(x) = bold(b)$, where $bold(A) in bb(R)^(m times n)$, $bold(b) in bb(R)^m$ and $"rk"(bold(A)) = n - k$.
+
+
+*Note:* Recall that for homogeneous equation systems $bold(A) bold(x) = bold(0)$ the solution was a vector subspace, which we can also think of as a special affine space with support point $bold(x)_0 = bold(0)$.
