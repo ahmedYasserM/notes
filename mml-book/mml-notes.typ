@@ -350,7 +350,7 @@ The definition of an affine subspace _excludes_ $bold(0)$ if $bold(x_0) in.not U
 
 
 #remark("")
-Consider two affine subspaces $L = bold(x_0) + U$ and $tilde(L) = tilde(bold(x_0)) + tilde(U)$ of a vector space $V$. Then, $L subset.eq tilde(L)$ if and only if $U subset.eq tilde(U)$ and $bold(x_0) in tilde(L)$
+Consider two affine subspaces $L = bold(x_0) + U$ and $tilde(L) = tilde(bold(x))_0 + tilde(U)$ of a vector space $V$. Then, $L subset.eq tilde(L)$ if and only if $U subset.eq tilde(U)$ and $bold(x_0) in tilde(L)$
 
 #remark("")
 Affine subspaces are often described by parameters: Consider a $k$-dimensional affine space #box($L = bold(x_0) + U "of" V$). if $(bold(b_1), dots, bold(b_k))$ is an ordered basis of $U$, then every element $bold(x) in L$ can be uniquely written as
@@ -359,7 +359,7 @@ $
   bold(x) = bold(x_0) + lambda_1 bold(b_1) + dots + lambda_k bold(b_k)
 $
 
-where $lambda_1, dots, lambda_k in RR$. Ths representaion is called the *parametric equation* of $L$ with *directional vectors* $bold(b_1), dots, bold(b_k)$ and *parameter* $lambda_1, dots, lambda_k$.
+where $lambda_1, dots, lambda_k in RR$. Ths representaion is called the *parametric equation* of $L$ with #box[*directional vectors*] $bold(b_1), dots, bold(b_k)$ and #box[*parameters*] $lambda_1, dots, lambda_k$.
 
 #remark("")
 
@@ -373,7 +373,7 @@ where $bold(b)_1, dots, bold(b)_(n-1)$ form a basis of an $(n-1)$-dimensional su
 
 This means that a hyperplane is defined by:
 - A *support point* $bold(x)_0$
-- $(n-1)$ linearly independent vectors $bold(b)_1, dots, bold(b)_(n-1)$ that span the direction space
+- $(n-1)$ linearly independent vectors $bold(b)_1, dots, bold(b)_(n-1)$ that span the *direction space*
 
 *Examples:*
 - In $bb(R)^2$, a line is a hyperplane
@@ -382,12 +382,32 @@ This means that a hyperplane is defined by:
 #remark("(Inhomogeneous systems of linear equations and affine subspaces)")
 For $bold(A) in bb(R)^(m times n)$ and $bold(b) in bb(R)^m$, the solution of the system of linear equations $bold(A) bold(x) = bold(b)$ is either the *empty set* or an *affine subspace* of $bb(R)^n$ of dimension $n - "rk"(bold(A))$.
 
-In particular, the solution of the linear equation
-$ lambda_1 bold(b)_1 + dots + lambda_n bold(b)_n = bold(x) $
-where $(lambda_1, dots, lambda_n) != (0, dots, 0)$, is a hyperplane in $bb(R)^n$.
+// ------ commented until be certain that there is no errors ----- //
+// In particular, the solution of the linear equation
+// $ lambda_1 bold(a)_1 + dots + lambda_n bold(a)_n = bold(b) $
+// where $(lambda_1, dots, lambda_n) != (0, dots, 0)$, is a hyperplane in $bb(R)^n$.
 
 
 In $bb(R)^n$, every $k$-dimensional affine subspace is the solution of an inhomogeneous system of linear equations $bold(A) bold(x) = bold(b)$, where $bold(A) in bb(R)^(m times n)$, $bold(b) in bb(R)^m$ and $"rk"(bold(A)) = n - k$.
 
 
 *Note:* Recall that for homogeneous equation systems $bold(A) bold(x) = bold(0)$ the solution was a vector subspace, which we can also think of as a special affine space with support point $bold(x)_0 = bold(0)$.
+
+=== 2.8.2 Affine Mappings
+
+#def("Affine Mapping")
+For two vector spaces $V, W$, a linear mapping $Phi: V -> W$ and $bold(a) in W$, the mapping
+
+$
+  phi.alt: & V -> W \
+           & bold(x) |-> bold(a) + Phi(bold(x))
+$
+
+is an *affine mapping* from $V$ to $W$. The vector $bold(a)$ is called the *translation vector* of $phi.alt$
+
+#remark("")
+- Every affine mapping $phi.alt : V -> W$ is also the composition of a linear mapping $Phi : V -> W$ and a translation $tau : W -> W, bold(x) |-> bold(a) + bold(x)$ in $W$, such that $phi.alt = tau compose Phi$. The mappings $Phi$ and $tau$ are *uniquely determined*.
+
+- The composition $phi.alt compose phi.alt$ of affine mappings $phi.alt : V -> W$, $phi.alt : W -> X$ is *affine*.
+
+- If $phi.alt$ is bijective, affine mappings keep the geometric structure invariant. They then also preserve the dimension and parallelism.
