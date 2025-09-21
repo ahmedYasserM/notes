@@ -82,6 +82,7 @@
 
 
 
+
 // *************************** Configs End *************************** //
 
 
@@ -120,7 +121,7 @@
 // *************************** Table of Contents End *************************** //
 
 
-= Chapter 2
+= Chapter 2 Linear Algebra
 
 === 2.6.2 Rank
 
@@ -408,6 +409,84 @@ is an *affine mapping* from $V$ to $W$. The vector $bold(a)$ is called the *tran
 #remark("")
 - Every affine mapping $phi.alt : V -> W$ is also the composition of a linear mapping $Phi : V -> W$ and a translation $tau : W -> W, bold(x) |-> bold(a) + bold(x)$ in $W$, such that $phi.alt = tau compose Phi$. The mappings $Phi$ and $tau$ are *uniquely determined*.
 
-- The composition $phi.alt compose phi.alt$ of affine mappings $phi.alt : V -> W$, $phi.alt : W -> X$ is *affine*.
+- The composition $acute(phi.alt) compose phi.alt$ of affine mappings $phi.alt : V -> W$, $acute(phi.alt) : W -> X$ is *affine*.
 
 - If $phi.alt$ is bijective, affine mappings keep the geometric structure invariant. They then also preserve the dimension and parallelism.
+
+= Chapter 3 Analytic Geometry
+
+== 3.1 Norms
+
+#def("Norm")
+A *norm* on a vector spacce $V$ is a function
+
+$
+  || dot ||: & V -> RR, \
+             & bold(x) |-> ||bold(x)||,
+$
+
+which assigns  each vector $bold(x)$ its *length* $||bold(x)|| in RR$, such that for all $lambda in RR$ and $bold(x), bold(y) in V$ the following hold:
+
+- *Absolutely homogeneous*: $||lambda bold(x)|| = |lambda| ||bold(x)||$
+  - If you scale a vector $bold(x)$ by a number (a scalar) $lambda$, its length is scaled by the absolute value of that number.
+
+- *Triangle inequality*: $||bold(x) + bold(y)|| <= ||bold(x)|| + ||bold(y)||$
+  - The length of the sum of two vectors is less than or equal to the sum of their individual lengths.
+  - The only time they would be equal is if the vectors $bold(x)$ and $bold(y)$ point in the *same direction*.
+
+- *Positive definite*: $||bold(x)|| >= 0$ and $||bold(x)|| = 0 <==> bold(x) = bold(0)$
+  - The length of a vector is always non-negative.
+  - A vector has zero length if and only if it is the zero vector.
+
+#remark("")
+In geometric terms, the triangle inequality states that for any triangle, the sum of the lengths of any two sides must be greater than or equal to the length of the remaining side.
+
+#def([Manhattan Norm or $ell_1$ norm])
+The *Manhattan norm* on $RR^n$ is defined for $bold(x) in RR^n$ as
+
+$ ||bold(x)||_1 := sum_(i=1)^n |x_i| $
+
+where $|x_i|$ is the absolute value of the $i$-th component of $bold(x)$.
+
+#def([Euclidean Norm or $ell_2$ norm])
+The *Euclidean norm* on $RR^n$ is defined for $bold(x) in RR^n$ as
+
+$ ||bold(x)||_2 := sqrt(sum_(i=1)^n x_i^2) = sqrt(bold(x)^tack.b bold(x)) $
+
+and computes the *Euclidean distancce* of $bold(x)$ from the origin.
+
+
+=== 3.2.1 Dot Product
+
+#def("Dot Product")
+The *dot product* (also called *scalar product*) is a *particular inner product* in $RR^n$ which is given by
+
+$
+  bold(x)^tack.b bold(y) = sum_(i = 1)^n x_i y_i
+$
+
+=== 3.2.2 General Inner Products
+
+#def("Bilinear Mapping")
+
+A *bilinear mapping* $Omega$ is a mapping with two arguments and it is *linear in each argument separately*,i.e., when we look at a vector spae $V$ then it holds that for all $bold(x), bold(y), bold(z) in V,$  #box[$" " lambda, psi in RR$] the following hold:
+
+
+- $Omega(lambda bold(x) + psi bold(y), bold(z)) = lambda Omega(bold(x), bold(z)) + psi Omega(bold(y), bold(z))$ (_Linearity in first argument_)
+
+- $Omega(bold(x), lambda bold(y) + psi bold(z)) = lambda Omega(bold(x), bold(y)) + psi Omega(bold(x), bold(z))$ (_Linearity in second argument_)
+
+#def("Symmetric and Positive Definite Bilinear Mapping")
+
+Let $V$ be a vector space and $Omega: V times V -> RR$ be a bilinear mapping that takes two vectors in $V$ and maps them onto a real number. Then
+
+- $Omega$ is called *symmetric* if $Omega(bold(x), bold(y)) = Omega(bold(y), bold(x))$ for all $bold(x), bold(y) in V$, i.e., the *order of the arguments does not matter*.
+
+- $Omega$ is called *positive definite* if $forall bold(x) in V\\{bold(0)}: Omega(bold(x), bold(x)) > 0, "  " Omega(bold(0), bold(0)) = 0$
+
+#def("Inner Product Space")
+Let $V$ be a vector space and $Omega: V times V -> RR$ be a bilinear mapping that takes two vectors in $V$ and maps them onto a real number. Then
+
+- A *positive definite, symmetric bilinear mapping* $Omega: V times V -> RR$ is called an *inner product* on $V$. We typically write $angle.l bold(x), bold(y) angle.r$ instead of $Omega(bold(x), bold(y))$
+
+- The pair $(V, angle.l dot, dot angle.r)$ is called an *inner product space* or *(real) vector space with inner product*. If we use the *dot product*, we call $(V, angle.l dot, dot angle.r)$ a *Euclidean vector space*.
