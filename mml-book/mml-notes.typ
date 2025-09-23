@@ -490,3 +490,38 @@ Let $V$ be a vector space and $Omega: V times V -> RR$ be a bilinear mapping tha
 - A *positive definite, symmetric bilinear mapping* $Omega: V times V -> RR$ is called an *inner product* on $V$. We typically write $angle.l bold(x), bold(y) angle.r$ instead of $Omega(bold(x), bold(y))$
 
 - The pair $(V, angle.l dot, dot angle.r)$ is called an *inner product space* or *(real) vector space with inner product*. If we use the *dot product*, we call $(V, angle.l dot, dot angle.r)$ a *Euclidean vector space*.
+
+=== 3.2.3 Symmetric, Positive Definite Matrices
+
+#remark("(Gram Matrix and Inner Product)")
+Consider an $n$-dimensional vector space $V$ with an inner product $angle.l dot, dot angle.r: V times V -> RR$ and an ordered basis $B = (bold(b)_1, dots, bold(b)_n)$. of $V$. Due to the bilinearity of the inner product, it holds for all $bold(x), bold(y) in V$ that
+
+$
+  angle.l bold(x), bold(y) angle.r = lr(angle.l sum_(i=1)^n psi_i bold(b)_i, sum_(j=1)^n lambda_j bold(b)_j angle.r) = sum_(i=1)^n psi_i (sum_(j=1)^n lambda_j angle.l bold(b)_i, bold(b)_j angle.r) = sum_(i=1)^n sum_(j=1)^n lambda_j psi_i angle.l bold(b)_i, bold(b)_j angle.r = bold(hat(x))^tack.b bold(A) bold(hat(y))
+$
+
+where $A_(i j) := angle.l bold(b)_i, bold(b)_j angle.r$ and $bold(hat(x)) := (psi_1, dots, psi_n)^tack.b$, $bold(hat(y)) := (lambda_1, dots, lambda_n)^tack.b$ are the coordinates of $bold(x)$ and $bold(y)$ with respect to the basis $B$. Note that:
+
+- This implies that the inner product $angle.l bold(x), bold(y) angle.r$ is *uniquely determined* through $bold(A)$.
+- The *symmetry* of the inner product also means that $bold(A)$ is *symmetric*.
+- The *positive definiteness* of the inner product imples that $forall bold(x) in V \\ {bold(0)}: bold(x)^tack.b bold(A) bold(x) > 0$.
+
+#def("Symmetric Positive Definite Matrix")
+A symmetric matrix $A in RR^(n times n)$ is classified as:
+
+- *Positive definite*: if $forall bold(x) in RR^n \\ {bold(0)}: bold(x)^tack.b A bold(x) > 0$
+- *Positive semidefinite*: if $forall bold(x) in RR^n \\ {bold(0)}: bold(x)^tack.b A bold(x) >= 0$
+
+#theorem("Matrix Representation of Inner Product")
+For a real-valued, finite-dimensional vector space $V$ and an ordered basis $B$ of $V$, it holds that $angle.l dot, dot angle.r: V times V -> RR$ is an *inner product* _if and only if_ there exists a *symmetric, positive definite matrix* $A in RR^(n times n)$ with
+
+$
+  angle.l bold(x), bold(y) angle.r = bold(hat(x))^tack.b A bold(hat(y))
+$
+
+#remark("")
+The following properties hold if $bold(A) in RR^(n times n)$ is *symmetric* *positive definite*:
+
+- The null space (kernel) of $bold(A)$ consists only of $bold(0)$ because $bold(x)^tack.b bold(A) bold(x) > 0$ for all $bold(x) != bold(0)$. This implies that $bold(A) bold(x) != bold(0)$ if $bold(x) != bold(0)$.
+
+- The *diagonal elements* $a_(i i)$ of $bold(A)$ are positive because $a_(i i) = bold(e_i)^tack.b bold(A) bold(e_i) > 0$, where $bold(e_i)$ is the $i$-th vector of the standard basis of $RR^n$.
