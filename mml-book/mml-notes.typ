@@ -328,8 +328,9 @@ $
   dim(ker(Phi)) + dim("Im"(Phi)) = dim(V)
 $
 
-#remark("(Direct Consequences of the Rank-Nullity Theorem)")
-- If $dim("im"(Phi)) < dim(V)$, then the $ker(Phi)$ is *non-trivial*, i.e., the kernel contains more than $bold(0)_V$ and $dim(ker(Phi)) >= 1$
+Direct Consequences of the Rank-Nullity Theorem:
+
+- If $dim("im"(Phi)) < dim(V)$, then the $ker(Phi)$ is *non-trivial*, i.e., the kernel contains more than $bold(0)_V$ and $dim(ker(Phi)) >= 1$.
 - If $bold(A)_Phi$ is the transformation matrix of $Phi$ with respect to an ordered basis and #box($dim("Im"(Phi)) < dim(V)$), then the SLE $bold(A)_Phi bold(x) = bold(0)$ has *infinitely many solutions*.
 
 
