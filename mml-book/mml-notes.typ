@@ -422,19 +422,19 @@ A *norm* on a vector spacce $V$ is a function
 
 $
   || dot ||: & V -> RR, \
-             & bold(x) |-> ||bold(x)||,
+             & bold(x) |-> norm(bold(x)),
 $
 
 which assigns  each vector $bold(x)$ its *length* $||bold(x)|| in RR$, such that for all $lambda in RR$ and $bold(x), bold(y) in V$ the following hold:
 
-- *Absolutely homogeneous*: $||lambda bold(x)|| = |lambda| ||bold(x)||$
+- *Absolutely homogeneous*: $norm(lambda bold(x)) = |lambda| norm(bold(x))$
   - If you scale a vector $bold(x)$ by a number (a scalar) $lambda$, its length is scaled by the absolute value of that number.
 
 - *Triangle inequality*: $||bold(x) + bold(y)|| <= ||bold(x)|| + ||bold(y)||$
   - The length of the sum of two vectors is less than or equal to the sum of their individual lengths.
   - The only time they would be equal is if the vectors $bold(x)$ and $bold(y)$ point in the *same direction*.
 
-- *Positive definite*: $||bold(x)|| >= 0$ and $||bold(x)|| = 0 <==> bold(x) = bold(0)$
+- *Positive definite*: $norm(bold(x)) >= 0$ and $norm(bold(x)) = 0 <==> bold(x) = bold(0)$
   - The length of a vector is always non-negative.
   - A vector has zero length if and only if it is the zero vector.
 
@@ -444,14 +444,14 @@ In geometric terms, the triangle inequality states that for any triangle, the su
 #def([Manhattan Norm or $ell_1$ norm])
 The *Manhattan norm* on $RR^n$ is defined for $bold(x) in RR^n$ as
 
-$ ||bold(x)||_1 := sum_(i=1)^n |x_i| $
+$ norm(bold(x))_1 := sum_(i=1)^n |x_i| $
 
 where $|x_i|$ is the absolute value of the $i$-th component of $bold(x)$.
 
 #def([Euclidean Norm or $ell_2$ norm])
 The *Euclidean norm* on $RR^n$ is defined for $bold(x) in RR^n$ as
 
-$ ||bold(x)||_2 := sqrt(sum_(i=1)^n x_i^2) = sqrt(bold(x)^tack.b bold(x)) $
+$ norm(bold(x))_2 := sqrt(sum_(i=1)^n x_i^2) = sqrt(bold(x)^tack.b bold(x)) $
 
 and computes the *Euclidean distancce* of $bold(x)$ from the origin.
 
@@ -493,16 +493,19 @@ Let $V$ be a vector space and $Omega: V times V -> RR$ be a bilinear mapping tha
 
 === 3.2.3 Symmetric, Positive Definite Matrices
 
+#let axy = $angle.l bold(x), bold(y) angle.r$
+#let adot = $angle.l dot, dot angle.r$
+
 #remark("(Gram Matrix and Inner Product)")
-Consider an $n$-dimensional vector space $V$ with an inner product $angle.l dot, dot angle.r: V times V -> RR$ and an ordered basis $B = (bold(b)_1, dots, bold(b)_n)$. of $V$. Due to the bilinearity of the inner product, it holds for all $bold(x), bold(y) in V$ that
+Consider an $n$-dimensional vector space $V$ with an inner product $adot: V times V -> RR$ and an ordered basis $B = (bold(b)_1, dots, bold(b)_n)$ of $V$. Due to the bilinearity of the inner product, it holds for all $bold(x), bold(y) in V$ that
 
 $
-  angle.l bold(x), bold(y) angle.r = lr(angle.l sum_(i=1)^n psi_i bold(b)_i, sum_(j=1)^n lambda_j bold(b)_j angle.r) = sum_(i=1)^n psi_i (sum_(j=1)^n lambda_j angle.l bold(b)_i, bold(b)_j angle.r) = sum_(i=1)^n sum_(j=1)^n lambda_j psi_i angle.l bold(b)_i, bold(b)_j angle.r = bold(hat(x))^tack.b bold(A) bold(hat(y))
+  axy = lr(angle.l sum_(i=1)^n psi_i bold(b)_i, sum_(j=1)^n lambda_j bold(b)_j angle.r) = sum_(i=1)^n psi_i (sum_(j=1)^n lambda_j angle.l bold(b)_i, bold(b)_j angle.r) = sum_(i=1)^n sum_(j=1)^n psi_i angle.l bold(b)_i, bold(b)_j angle.r lambda_j = bold(hat(x))^tack.b bold(A) bold(hat(y))
 $
 
 where $A_(i j) := angle.l bold(b)_i, bold(b)_j angle.r$ and $bold(hat(x)) := (psi_1, dots, psi_n)^tack.b$, $bold(hat(y)) := (lambda_1, dots, lambda_n)^tack.b$ are the coordinates of $bold(x)$ and $bold(y)$ with respect to the basis $B$. Note that:
 
-- This implies that the inner product $angle.l bold(x), bold(y) angle.r$ is *uniquely determined* through $bold(A)$.
+- This implies that the inner product $axy$ is *uniquely determined* through $bold(A)$.
 - The *symmetry* of the inner product also means that $bold(A)$ is *symmetric*.
 - The *positive definiteness* of the inner product imples that $forall bold(x) in V \\ {bold(0)}: bold(x)^tack.b bold(A) bold(x) > 0$.
 
@@ -513,10 +516,10 @@ A symmetric matrix $A in RR^(n times n)$ is classified as:
 - *Positive semidefinite*: if $forall bold(x) in RR^n \\ {bold(0)}: bold(x)^tack.b A bold(x) >= 0$
 
 #theorem("Matrix Representation of Inner Product")
-For a real-valued, finite-dimensional vector space $V$ and an ordered basis $B$ of $V$, it holds that $angle.l dot, dot angle.r: V times V -> RR$ is an *inner product* _if and only if_ there exists a *symmetric, positive definite matrix* $A in RR^(n times n)$ with
+For a real-valued, finite-dimensional vector space $V$ and an ordered basis $B$ of $V$, it holds that $adot: V times V -> RR$ is an *inner product* _if and only if_ there exists a *symmetric, positive definite matrix* $A in RR^(n times n)$ with
 
 $
-  angle.l bold(x), bold(y) angle.r = bold(hat(x))^tack.b A bold(hat(y))
+  axy = bold(hat(x))^tack.b A bold(hat(y))
 $
 
 #remark("")
@@ -525,3 +528,57 @@ The following properties hold if $bold(A) in RR^(n times n)$ is *symmetric* *pos
 - The null space (kernel) of $bold(A)$ consists only of $bold(0)$ because $bold(x)^tack.b bold(A) bold(x) > 0$ for all $bold(x) != bold(0)$. This implies that $bold(A) bold(x) != bold(0)$ if $bold(x) != bold(0)$.
 
 - The *diagonal elements* $a_(i i)$ of $bold(A)$ are positive because $a_(i i) = bold(e_i)^tack.b bold(A) bold(e_i) > 0$, where $bold(e_i)$ is the $i$-th vector of the standard basis of $RR^n$.
+
+
+== 3.3 Lengths and Distances
+
+#remark("")
+Any inner product induces a norm
+
+$
+  norm(bold(x)) := sqrt(axy)
+$
+
+However, not every norm is induced by an inner product. The *Manhattan norm* is an example of a norm without a corresponding inner product.
+
+#remark("(Cauchy-Schwarz Inequality)")
+
+For an inner product vector space $(V, adot)$, the induced norm $norm(dot)$ satisfies the _Cauchy-Schwarz inequality_: $abs(axy) <= norm(bold(x)) norm(bold(y))$
+
+#def("Distance and Metric")
+
+Consider an inner product space $V, adot$. Then
+
+$
+  #let eq = $angle.l bold(x) - bold(y), bold(x) - bold(y) angle.r$
+  d(bold(x), bold(y)) := norm(bold(x) - bold(y)) = sqrt(eq)
+$
+
+is called the *distance* between $bold(x)$ and $bold(y)$ for $bold(x), bold(y) in V$. If we use the *dot product* as the inner product, then the distance is called the *Euclidean distance*.
+
+The mapping
+
+$
+  d: & V times V -> RR, \
+     & (bold(x), bold(y)) |-> d(bold(x) - bold(y))
+$
+
+is called a *metric*
+
+#remark("")
+Similar to the length of a vector, the distance between vectors does not require an inner product: a norm is sufficient
+
+#remark("")
+A metric $d: V times V -> RR$ satisfies the following properties:
+
+- $d$ is *positive definite*, i.e., $d(bold(x), bold(y)) >= 0$ for all $bold(x), bold(y) in V$ and $d(bold(x), bold(y)) = 0 <==> bold(x) = bold(y)$.
+
+- $d$ is *symmetric*, i.e., $d(bold(x), bold(y)) = d(bold(y), bold(x))$ for all $bold(x), bold(y) in V$.
+
+- *Triangle inequality*: $d(bold(x), bold(z)) <= d(bold(x), bold(y)) + d(bold(y), bold(z))$ for all $bold(x), bold(y), bold(z) in V$.
+
+#remark("")
+Inner products and metrics have *opposing behaviors* despite similar property lists:
+
+- *Similar* $x$ and $y$ → *large* inner product value
+- *Similar* $x$ and $y$ → *small* metric value
