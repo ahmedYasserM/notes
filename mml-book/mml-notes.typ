@@ -489,7 +489,6 @@ Let $V$ be a vector space and $Omega: V times V -> RR$ be a bilinear mapping tha
 Let $V$ be a vector space and $Omega: V times V -> RR$ be a bilinear mapping that takes two vectors in $V$ and maps them onto a real number. Then
 
 - A *positive definite, symmetric bilinear mapping* $Omega: V times V -> RR$ is called an *inner product* on $V$. We typically write $angle.l bold(x), bold(y) angle.r$ instead of $Omega(bold(x), bold(y))$
-
 - The pair $(V, angle.l dot, dot angle.r)$ is called an *inner product space* or *(real) vector space with inner product*. If we use the *dot product*, we call $(V, angle.l dot, dot angle.r)$ a *Euclidean vector space*.
 
 === 3.2.3 Symmetric, Positive Definite Matrices
@@ -504,15 +503,15 @@ $
   axy = lr(angle.l sum_(i=1)^n psi_i bold(b)_i, sum_(j=1)^n lambda_j bold(b)_j angle.r) = sum_(i=1)^n psi_i (sum_(j=1)^n lambda_j angle.l bold(b)_i, bold(b)_j angle.r) = sum_(i=1)^n sum_(j=1)^n psi_i angle.l bold(b)_i, bold(b)_j angle.r lambda_j = bold(hat(x))^tack.b bold(A) bold(hat(y))
 $
 
-where $A_(i j) := angle.l bold(b)_i, bold(b)_j angle.r$ and $bold(hat(x)) := (psi_1, dots, psi_n)^tack.b$, $bold(hat(y)) := (lambda_1, dots, lambda_n)^tack.b$ are the coordinates of $bold(x)$ and $bold(y)$ with respect to the basis $B$. Note that:
+where $A_(i j) := angle.l bold(b)_i, bold(b)_j angle.r$ and $bold(hat(x)) := (psi_1, dots, psi_n)^tack.b$, $bold(hat(y)) := (lambda_1, dots, lambda_n)^tack.b$ are the coordinates of $bold(x)$ and $bold(y)$ with respect to the basis $B$.
 
+Note that:
 - This implies that the inner product $axy$ is *uniquely determined* through $bold(A)$.
 - The *symmetry* of the inner product also means that $bold(A)$ is *symmetric*.
 - The *positive definiteness* of the inner product imples that $forall bold(x) in V \\ {bold(0)}: bold(x)^tack.b bold(A) bold(x) > 0$.
 
 #def("Symmetric Positive Definite Matrix")
 A symmetric matrix $A in RR^(n times n)$ is classified as:
-
 - *Positive definite*: if $forall bold(x) in RR^n \\ {bold(0)}: bold(x)^tack.b A bold(x) > 0$
 - *Positive semidefinite*: if $forall bold(x) in RR^n \\ {bold(0)}: bold(x)^tack.b A bold(x) >= 0$
 
@@ -525,9 +524,7 @@ $
 
 #remark("")
 The following properties hold if $bold(A) in RR^(n times n)$ is *symmetric* *positive definite*:
-
 - The null space (kernel) of $bold(A)$ consists only of $bold(0)$ because $bold(x)^tack.b bold(A) bold(x) > 0$ for all $bold(x) != bold(0)$. This implies that $bold(A) bold(x) != bold(0)$ if $bold(x) != bold(0)$.
-
 - The *diagonal elements* $a_(i i)$ of $bold(A)$ are positive because $a_(i i) = bold(e_i)^tack.b bold(A) bold(e_i) > 0$, where $bold(e_i)$ is the $i$-th vector of the standard basis of $RR^n$.
 
 
@@ -535,12 +532,14 @@ The following properties hold if $bold(A) in RR^(n times n)$ is *symmetric* *pos
 
 #remark("")
 Any inner product induces a norm
-
 $
-  norm(bold(x)) := sqrt(axy)
+  #let eq = $angle.l bold(x), bold(x) angle.r$
+  norm(bold(x)) := sqrt(eq)
 $
 
 However, not every norm is induced by an inner product. The *Manhattan norm* is an example of a norm without a corresponding inner product.
+
+// #pagebreak()
 
 #remark("(Cauchy-Schwarz Inequality)")
 
@@ -548,7 +547,7 @@ For an inner product vector space $(V, adot)$, the induced norm $norm(dot)$ sati
 
 #def("Distance and Metric")
 
-Consider an inner product space $V, adot$. Then
+Consider an inner product space $(V, adot)$. Then
 
 $
   #let eq = $angle.l bold(x) - bold(y), bold(x) - bold(y) angle.r$
@@ -567,15 +566,13 @@ $
 is called a *metric*
 
 #remark("")
-Similar to the length of a vector, the distance between vectors does not require an inner product: a norm is sufficient
+Similar to the length of a vector, the distance between vectors does not require an inner #box([product: a norm is sufficient])
 
 #remark("")
 A metric $d: V times V -> RR$ satisfies the following properties:
 
 - $d$ is *positive definite*, i.e., $d(bold(x), bold(y)) >= 0$ for all $bold(x), bold(y) in V$ and $d(bold(x), bold(y)) = 0 <==> bold(x) = bold(y)$.
-
 - $d$ is *symmetric*, i.e., $d(bold(x), bold(y)) = d(bold(y), bold(x))$ for all $bold(x), bold(y) in V$.
-
 - *Triangle inequality*: $d(bold(x), bold(z)) <= d(bold(x), bold(y)) + d(bold(y), bold(z))$ for all $bold(x), bold(y), bold(z) in V$.
 
 #remark("")
@@ -583,3 +580,80 @@ Inner products and metrics have *opposing behaviors* despite similar property li
 
 - *Similar* $x$ and $y$ → *large* inner product value
 - *Similar* $x$ and $y$ → *small* metric value
+
+== 3.4 Angles and Orthogonality
+
+#remark("(Angle between Vectors)")
+
+We use the *Cauchy-Schwarz inequality* to define the angle $omega$ in inner product spaces between two vectors $bold(x), bold(y)$. Assume that $bold(x) != bold(0)$ and $bold(y) != bold(0)$. Then
+
+$
+  -1 <= axy / (norm(bold(x)) norm(bold(y))) <= 1
+$
+
+Therefore, there exits a unique angle $omega in [0, pi]$ between the vectors $bold(x)$ and $bold(y)$, with
+
+$
+  cos(omega) = axy / (norm(bold(x)) norm(bold(y)))
+$
+
+Note that:
+
+- We restict $omega$ to $[0, pi]$ so that $cos(omega)$ returns a unique number in the interval $[-1, 1]$.
+- The angle between two vectors tells us *how similar* their *orientations* are.
+
+#def("Orthogonal Vectors")
+
+Two vectors $bold(x)$ and $bold(y)$ are *orthogonal* _if and only if_ $axy = 0$, and we write $bold(x) perp bold(y)$.
+
+#def("Orthonormal Vectors")
+Two vectors $bold(x)$ and $bold(y)$ are *orthonormal* _if and only if_ $bold(x) perp bold(y)$ and $norm(bold(x)) = norm(bold(y)) = 1$ (i.e., the vectors are *unit* vectors).
+
+#remark("")
+The $bold(0)$-vector is *orthogonal* to every vector in the vector space, because $angle.l bold(0), bold(x) angle.r = 0$ for all $bold(x) in V$.
+
+#remark("")
+*Orthogonality* is the generalization of the concept of *perpendicularity* to bilinear forms that do not have to be the dot product.
+
+#remark("")
+Vectors that are orthogonal with respect to one inner product *do not have to be orthogonal* with respect to a different inner product.
+
+#def("Orthogonal Matrix")
+A square matrix $bold(A) in RR^(n times n)$ is an *orthogonal matrix* _if and only if_
+
+$
+  bold(A) bold(A)^tack.b = bold(I) = bold(A)^tack.b bold(A),
+$
+
+which implies that
+
+$
+  bold(A)^(-1) = bold(A)^tack.b
+$
+
+i.e., the inverse is obtained by simply transposing the matrix.
+
+Note that, it is convention to call these matrices *orthogonal* but a more precise description would be *orthonormal*.
+
+// - Transformations with orthogonal matrices *preserve distances and angles*.
+
+#remark("(Orthogonal Matrices)")
+
+Transformations by orthogonal matrices are special because the length of a vector $bold(x)$ is not changed when transforming it using an orthogonal matrix $bold(A)$. Moreover, the angle between any two vectors $bold(x), bold(y)$, as measured by their inner product, is also unchanged when transforming them using $bold(A)$.
+
+Assume the dot product is the inner product:
+
+- *length preservation*:
+$
+  norm(bold(A) bold(x))_2 = (bold(A) bold(x))^tack.b (bold(A) bold(x)) = bold(x)^tack.b bold(A)^tack.b bold(A) bold(x) = bold(x)^tack.b bold(I) bold(x) = bold(x)^tack.b bold(x) = norm(bold(x))_2
+$
+
+- *angle preservation*:
+$
+  cos(omega) = ((bold(A)bold(x))^tack.b (bold(A)bold(y))) / (norm(bold(A) bold(x))_2 norm(bold(A)bold(y))_2) = (bold(x)^tack.b bold(A)^tack.b bold(A) bold(y)) / (sqrt((bold(A) bold(x))^tack.b bold(A) bold(x)) sqrt((bold(A) bold(y))^tack.b bold(A) bold(y))) = (bold(x)^tack.b bold(y)) / (sqrt(bold(x)^tack.b bold(x)) sqrt(bold(y)^tack.b bold(y))) = (bold(x)^tack.b bold(y)) / (norm(bold(x))_2 norm(bold(y))_2)
+$
+
+Which means that the orthogonal matrices $bold(A)$ with $bold(A)^tack.b = bold(A)^(-1)$ preserve both *angles* and *distances*.
+
+#remark("")
+Orthogonal matrices define transformations that are *rotations* (with the possibility of flips).
