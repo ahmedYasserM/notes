@@ -619,7 +619,7 @@ The $bold(0)$-vector is *orthogonal* to every vector in the vector space, becaus
 Vectors that are orthogonal with respect to one inner product *do not have to be orthogonal* with respect to a different inner product.
 
 #def("Orthogonal Matrix")
-A square matrix $bold(A) in RR^(n times n)$ is an *orthogonal matrix* _if and only if_
+A square matrix $bold(A) in RR^(n times n)$ is an *orthogonal matrix* _if and only if_ its columns are #box[*orthonormal*] so that
 
 $
   bold(A) bold(A)^tack.b = bold(I) = bold(A)^tack.b bold(A),
@@ -657,3 +657,73 @@ Which means that the orthogonal matrices $bold(A)$ with $bold(A)^tack.b = bold(A
 
 #remark("")
 Orthogonal matrices define transformations that are *rotations* (with the possibility of flips).
+
+#pagebreak()
+
+== 3.5 Orthonormal Basis
+
+#def("Orthonormal Basis")
+
+Consider an $n$-dimensional vector space $V$ and a basis ${bold(b)_1, dots, bold(b)_n}$ of $V$. If
+
+$
+  & angle.l bold(b)_i, bold(b)_j angle.r = 0 "    for " i != j \
+  & angle.l bold(b)_i, bold(b)_i angle.r = 1
+$
+
+for all $i, j = 1, dots, n$ then the basis is called *orthonormal basis (ONB)*. If only the _first equation_ is satisfied, then the basis is called an *orthogonal basis*. Note that that the second equation $angle.l bold(b)_i, bold(b)_i angle.r = 1$ implies that every basis vector has length/norm equal to 1.
+
+#remark("(Gram-Schmidt Process)")
+
+Assume we are given a set ${bold(tilde(b))_1, dots, bold(tilde(b))_n}$ of *non-orthogonal* and *unnormalized* *basis* vectors. We concatenate them into a matrix $bold(tilde(B)) = [bold(tilde(b))_1 | dots | bold(tilde(b))_n]$ and apply *Gaussian elemination* to the augmented matrix $[bold(tilde(B)) bold(tilde(B))^tack.b | bold(I)]$ to obtain an *orthonormal basis*. This construtive way to iteratively build an orthonormal basis ${bold(b)_1, dots, bold(b)_n}$ is called the *Gram-Schmidt process*.
+
+== 3.6 Orthogonal Complement
+
+#def("Orthogonal Complement")
+Consider a $D$-dimensional vector space $V$ and $M$-dimensional subspace $U subset.eq V$. Then the *orthogonal complement* $U^tack.t$ is a $(D-M)$-dimensional subspace of $V$ and *contains all vectors in* $V$ *that are orthogonal to every vector in* $U$
+
+
+$
+  & U^tack.t = {v in V: angle.l v, u angle.r = 0, "   " "for every " u in U} \
+
+  & dim(V) = dim(U) + dim(U^tack.t)
+$
+
+
+
+Furthermore, $U inter U^tack.t = {bold(0)}$ (because $bold(0)$ is the only vector that can be orthogonal to itself) so that any vector $bold(x) in V$ can be *uniquely* decomposed into
+
+
+$
+  #let ann1 = [Vector in  $U$]
+  #let ann2 = [Vector in  $U^tack.t$]
+  bold(x) = underbrace(sum_(m=1)^M lambda_m bold(b)_m, ann1) + underbrace(sum_(j=1)^(D-M) psi_j bold(b)_j^tack.t, ann2), "   " lambda_m, psi_j in RR,
+$
+
+where $(bold(b)_1, dots, bold(b)_M)$ is a basis for $U$ and $(bold(b)_1^tack.t, dots, bold(b)_(D-M)^tack.t)$ is a basis for $U^tack.t$.
+
+Note that:
+- The orthogonal complement can be used to describe a plane $U$ (two-dimensional subspace) in a three-dimensional vector space.
+- The vector $bold(w)$ with $norm(bold(w)) = 1$ which is orthogonal to the plane $U$, is the basis vector of $U^tack.t$ and is called the *normal vector* of $U$.
+- Generally, *orthogonal complements* can be used to describe *hyperplanes* in #box[$n$-dimensional] vector and affine spaces.
+
+== 3.7 Inner Product of Functions
+
+#remark("")
+We can think of a vector $bold(x) in RR^n$ as a function with $n$ function values. The concept of an inner product can be generalized to vectors with an *infinite* number of entries (*countably infinite*) and also *continuous-values functions* (*uncountably infinite*).
+
+#remark("(Inner Product of Functions)")
+
+Consider a vector space $V$ of functions $u : RR -> RR$. An inner product of two functions $u, v in V$ can be defined as the definite integral
+
+$
+  angle.l u, v angle.r := integral_a^b u(x) v(x) dif x
+$
+
+for lower and upper limits $a, b < infinity$, respectively.
+
+Note that:
+
+- If the previous equation evaluates to zero, then the functions $u$ and $v$ are *orthogonal*.
+- Unlike inner products on _finite-dimensional_ vector spaces, the inner products on _functions_ may *diverge* (have *infinite* value).
+
